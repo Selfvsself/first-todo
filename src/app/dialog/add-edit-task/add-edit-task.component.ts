@@ -18,14 +18,28 @@ export class AddEditTaskComponent implements OnInit {
   ) {
   }
 
-  private title: string;
-  private task: Task;
+  title: string;
+  task: Task;
+  tmpTitle: string;
 
   ngOnInit(): void {
     this.task = this.data[0];
     this.title = this.data[1];
 
-    console.log(this.task);
+    this.tmpTitle = this.task.title;
   }
 
+  onConfirm(): void {
+
+    this.task.title = this.tmpTitle;
+
+    this.dialogRef.close(this.task);
+
+  }
+
+  onCancel(): void {
+
+    this.dialogRef.close(null);
+
+  }
 }

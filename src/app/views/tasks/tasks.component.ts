@@ -28,6 +28,9 @@ export class TasksComponent implements OnInit {
     this.fillTable();
   }
 
+  @Output()
+  updateTask = new EventEmitter<Task>();
+
   // @Output()
   // selectedTask = new EventEmitter<Task>();
 
@@ -89,7 +92,12 @@ export class TasksComponent implements OnInit {
 
   openEditTaskDialog(task: Task): void {
     const dialogRef = this.dialog.open(AddEditTaskComponent, {data: [task, 'Редактирование задачи'], autoFocus: false});
-    dialogRef.afterClosed().subscribe()
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result as Task) {
+        this.updateTask.emit(result);
+      }
+    });
   }
 
   // ngAfterViewInit(): void {

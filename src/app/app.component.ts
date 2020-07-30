@@ -33,4 +33,15 @@ export class AppComponent implements OnInit {
   // onSelectTask(task: Task): void {
   //   console.log(task);
   // }
+  onUpdateTasks(task: Task): void {
+    this.dataHandler.updateTask(task).subscribe(() => {
+      this.dataHandler.searchTodos(
+        this.selectedCategory,
+        null,
+        null,
+        null
+      ).subscribe(tasks => this.tasks = tasks);
+    });
+
+  }
 }

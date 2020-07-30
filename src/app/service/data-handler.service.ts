@@ -32,4 +32,8 @@ export class DataHandlerService {
 
   fillTaskByCategory(category: Category): void {
   }
+
+  updateTask(task: Task): Observable<Task> {
+    return this.taskDaoArray.update(task);
+  }
 }
