@@ -83,7 +83,7 @@ export class TasksComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  selectTask(task: Task): void {
+  openEditTaskDialog(task: Task): void {
     this.selectedTask.emit(task);
   }
 

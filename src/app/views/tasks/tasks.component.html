@@ -22,7 +22,7 @@
       <!--Название задачи-->
       <ng-container matColumnDef="title">
         <th *matHeaderCellDef mat-header-cell mat-sort-header>Название</th>
-        <td class="col-title" *matCellDef="let task" [class.completed]="task.completed" mat-cell>
+        <td (click)="openEditTaskDialog(task)" class="col-title pointer" *matCellDef="let task" [class.completed]="task.completed" mat-cell>
           {{task.title}}
         </td>
       </ng-container>
@@ -55,7 +55,7 @@
       <tr *matHeaderRowDef="displayedColumns; " mat-header-row></tr>
 
       <!--Строки таблицы-->
-      <tr *matRowDef="let row; columns: displayedColumns; " (click)="selectTask(row)" mat-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns; " mat-row></tr>
 
     </table>
 
