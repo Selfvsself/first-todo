@@ -4,6 +4,8 @@ import {DataHandlerService} from '../../service/data-handler.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import {MatDialog} from '@angular/material/dialog';
+import {AddEditTaskComponent} from '../../dialog/add-edit-task/add-edit-task.component';
 
 @Component({
   selector: 'app-tasks',
@@ -26,11 +28,13 @@ export class TasksComponent implements OnInit {
     this.fillTable();
   }
 
-  @Output()
-  selectedTask = new EventEmitter<Task>();
+  // @Output()
+  // selectedTask = new EventEmitter<Task>();
 
 
-  constructor(private dataHandler: DataHandlerService) {
+  constructor(
+    private dataHandler: DataHandlerService,
+    private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -45,7 +49,7 @@ export class TasksComponent implements OnInit {
 
   fillTable(): void {
     if (this.dataSource == null) {
-        return;
+      return;
     }
 
     this.dataSource.data = this.tasks;
@@ -84,7 +88,8 @@ export class TasksComponent implements OnInit {
   }
 
   openEditTaskDialog(task: Task): void {
-    this.selectedTask.emit(task);
+    const dialogRef = this.dialog.open(AddEditTaskComponent, {data: [task, 'Редактирование задачи'], autoFocus: false});
+    dialogRef.afterClosed().subscribe()
   }
 
   // ngAfterViewInit(): void {

@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
       this.tasks = todos);
   }
 
-  onSelectTask(task: Task): void {
-    console.log(task);
-  }
+  // onSelectTask(task: Task): void {
+  //   console.log(task);
+  // }
 }
