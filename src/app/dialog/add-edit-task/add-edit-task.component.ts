@@ -77,4 +77,9 @@ export class AddEditTaskComponent implements OnInit {
       }
     });
   }
+
+  changeCompletedStatusTask(): void {
+    this.task.completed = !this.task.completed;
+    this.dialogRef.close(this.task);
+  }
 }
