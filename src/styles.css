@@ -20,3 +20,15 @@ body {
   color: rgba(74, 74, 74, 0.98);
   text-align: center;
 }
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-dialog-container {
+  padding: 40px !important;
+}
+
+.red {
+  color: red;
+}

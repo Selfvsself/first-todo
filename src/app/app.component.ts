@@ -44,4 +44,15 @@ export class AppComponent implements OnInit {
     });
 
   }
+
+  deleteTask(task: Task): void {
+    this.dataHandler.deleteTask(task).subscribe(() => {
+      this.dataHandler.searchTodos(
+        this.selectedCategory,
+        null,
+        null,
+        null
+      ).subscribe(tasks => this.tasks = tasks);
+    });
+  }
 }
