@@ -32,6 +32,18 @@
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field>
+    <input matInput placeholder="Укажите срок выполения" #inputDate
+    readonly="true"
+    [matDatepicker]="picker"
+    [(ngModel)]="tmpDate"
+    (click)="picker.open()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <button  *ngIf="inputDate.value.length > 0" mat-button matSuffix mat-icon-button aria-label="Clear"
+    (click)="tmpData=null"><mat-icon>clear</mat-icon></button>
+  </mat-form-field>
+
 
 </mat-dialog-content>
 

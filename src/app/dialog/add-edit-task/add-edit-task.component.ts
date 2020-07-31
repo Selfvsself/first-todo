@@ -26,6 +26,7 @@ export class AddEditTaskComponent implements OnInit {
   tmpTitle: string;
   tmpCategory: Category;
   tmpPriority: Priority;
+  tmpDate: Date;
   categories: Category[];
   priorities: Priority[];
 
@@ -36,6 +37,7 @@ export class AddEditTaskComponent implements OnInit {
     this.tmpTitle = this.task.title;
     this.tmpCategory = this.task.category;
     this.tmpPriority = this.task.priority;
+    this.tmpDate = this.task.date;
 
     this.dataHandler.getAllCategory().subscribe(categories => {
       this.categories = categories;
@@ -50,6 +52,7 @@ export class AddEditTaskComponent implements OnInit {
     this.task.title = this.tmpTitle;
     this.task.category = this.tmpCategory;
     this.task.priority = this.tmpPriority;
+    this.task.date = this.tmpDate;
 
     this.dialogRef.close(this.task);
 
